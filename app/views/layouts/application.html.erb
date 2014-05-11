@@ -1,14 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Echoes</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>SupportMe</title>
+  <%= stylesheet_link_tag "style.css" %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
-<%= yield %>
+  <header>
 
+    <h1>SupportMe App</h1>
+    
+    <div id="login">
+      <% if current_user %>
+      Logged in as <%= current_user.email %>.
+      <%= link_to "View Profile", user_path(current_user.id) %>
+      <%= link_to "Logout", :logout, method: :post %>
+      <% else %>
+    <!--   <%= link_to "Sign up", signup_path %> or
+      <%= link_to "log in", login_path %>.
+
+ -->      <% end %>
+    </div>
+
+  </header>
+
+  <nav>
+    <ul>
+      <li>
+        <%= link_to "Home", projects_path %>
+        <ul>
+          <li><a href="" target="_blank">m 1</a></li>
+          <li><a href="" target="_blank">Item 2</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="" target="_blank">Menu</a>
+        <ul>
+          <li><a href="" target="_blank"></a></li>
+          <li><a href="" target="_blank">Item 2</a></li>
+          <li><a href="" target="_blank">Item 3</a></li>
+
+        </ul>
+      </li>
+      <li>
+        <a href="" target="_blank">Signup - Login</a>
+        <ul>
+          <li> <%= link_to "Sign Up", new_user_path %> </li>
+          <li> <%= link_to "Login", :login %> </li>
+
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+
+  <%= yield %>
+
+  <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
+  
 </body>
 </html>
+
+
+<footer>
+  <p>
+    2014. An All About Drama design.
+  </p>
+</footer>
+
+
+</html>
+
+
+
+
