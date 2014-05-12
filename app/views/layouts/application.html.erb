@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>SupportMe</title>
-  <%= stylesheet_link_tag "style.css" %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -12,28 +11,35 @@
 
   <header>
 
-    <h1>SupportMe App</h1>
-    
     <div id="login">
+          <h1>Echoes</h1>
+
       <% if current_user %>
       Logged in as <%= current_user.email %>.
       <%= link_to "View Profile", user_path(current_user.id) %>
       <%= link_to "Logout", :logout, method: :post %>
       <% else %>
-    <!--   <%= link_to "Sign up", signup_path %> or
-      <%= link_to "log in", login_path %>.
 
- -->      <% end %>
+     <% end %>
+
     </div>
 
   </header>
 
+<ul class="navigation">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Search</a></li>
+  <li><a href="#">Sign Up - Login</a></li>
+</ul>
+
+
+<!-- 
   <nav>
-    <ul>
+    <ul class="navigation">
       <li>
-        <%= link_to "Home", projects_path %>
+        <%= link_to "Home", users_path %>
         <ul>
-          <li><a href="" target="_blank">m 1</a></li>
+          <li><a href="" target="_blank">Item 1</a></li>
           <li><a href="" target="_blank">Item 2</a></li>
         </ul>
       </li>
@@ -56,7 +62,7 @@
       </li>
     </ul>
   </nav>
-
+ -->
 
 
 
@@ -74,7 +80,7 @@
 
 <footer>
   <p>
-    2014. An All About Drama design.
+    Copyright 2014. An All About Drama design.
   </p>
 </footer>
 
