@@ -15,12 +15,13 @@
           <h1>Echoes</h1>
 
       <% if current_user %>
-      Logged in as <%= current_user.email %>.
-      <%= link_to "View Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", :logout, method: :post %>
+        Logged in as <%= current_user.email %>.
+        <%= link_to "View Profile", user_path(current_user.id) %>
+        <%= link_to "Logout", :logout, method: :post %>
       <% else %>
-
-     <% end %>
+        <%= link_to "Sign Up", new_user_path %> |
+        <%= link_to "Login", :login %>
+      <% end %>
 
     </div>
 

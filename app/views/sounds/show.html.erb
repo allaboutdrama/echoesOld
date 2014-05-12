@@ -1,0 +1,20 @@
+<h2> <%= @sound.name %> </h2>
+
+<p>
+  <strong>Name: </strong>
+  <%= @sound.name %>
+</p> 
+<p>
+  <strong>Email: </strong>
+  <%= @sound.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_sound_path %>
+  <%= link_to 'Delete', sound_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  
+</p>
+
+
+
+
