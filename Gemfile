@@ -38,6 +38,8 @@ gem 'quiet_assets', group: [:development]
 #Authentication library
 gem 'sorcery'
 
+# Add geolocation to library items
+gem 'geocoder'
 
 
 
