@@ -1,2 +1,48 @@
-<h1>Sounds#new</h1>
-<p>Find me in app/views/sounds/new.html.erb</p>
+<h1>Create a new sound</h1>
+
+<%= form_for @sound do |f| %>
+
+<% if @sound.errors.any? %>
+
+<div class="error_messages">
+  <h3>Form is invalid</h3>
+  <ul>
+    <% for message in @sound.errors.full_messages %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% end %>
+
+<div class="form_field">
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</div>
+
+<div class="form_field">
+  <%= f.label :sound_url %>
+  <%= f.text_field :sound_url %>
+</div>
+
+<div class="form_field">
+  <%= f.label :latitude %>
+  <%= f.text_field :latitude %>
+</div>
+
+<div class="form_field">
+  <%= f.label :longitude%>
+  <%= f.text_field :longitude %>
+</div>
+
+<div class="form_field">
+  <%= f.label :description%>
+  <%= f.text_field :description %>
+</div>
+
+
+
+<div class="form_actions"><%= f.submit %></div>
+<% end %>
+
+<%= link_to 'Back to Sounds', sounds_path %>
