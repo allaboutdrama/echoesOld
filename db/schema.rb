@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511212624) do
+ActiveRecord::Schema.define(version: 20140512191430) do
+
+  create_table "sounds", force: true do |t|
+    t.string   "name"
+    t.decimal  "latitude",    precision: 9, scale: 6
+    t.decimal  "longitude",   precision: 9, scale: 6
+    t.text     "description"
+    t.string   "image_url"
+    t.string   "sound_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
