@@ -1,5 +1,5 @@
 <h2> <%= @sound.name %> </h2>
- 
+
 <p>
   <strong>Email: </strong>
   <%= @sound.description %>
@@ -15,13 +15,16 @@
 </p>
 
 
-
-<audio src="<%= @sound.sound_url %>" id="demo"></audio>
 <div>
+  <audio src="<%= @sound.sound_url %>" id="demo"></audio>
   <button onclick="document.getElementById('demo').play()">Play the Audio</button>
   <button onclick="document.getElementById('demo').pause()">Pause the Audio</button>
   <button onclick="document.getElementById('demo').volume+=0.1">Increase Volume</button>
   <button onclick="document.getElementById('demo').volume-=0.1">Decrease Volume</button>
+</div>
+
+<div id="map-canvas">
+  
 </div>
 
 
@@ -31,4 +34,25 @@
   
 </p>
 
+
+
+<% if @nearby_sounds.present? %>
+  <h2>Nearby Sounds</h2>
+  <ul>
+  <% @nearby_sounds.each do |ns| %>
+    <li><%= "#{ns.name}, #{ns.distance}" %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+
+<%= javascript_tag do %>
+  window.latitude = <%= @sound.latitude.to_f %>;
+  window.longitude = <%= @sound.longitude.to_f %>;
+  window.showMarker = true;
+
+   window.coords = <%= raw @nearby_sounds.map {|r| {latitude: r.latitude.to_f, longitude: r.longitude.to_f}}.to_json %>
+
+<% end %>
 

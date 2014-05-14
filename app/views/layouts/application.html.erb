@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SupportMe</title>
+  <title>Echoes</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api}&sensor=false" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -11,30 +11,30 @@
 <body>
 
   <header>
-          <h1>Echoes</h1>
-<ul class="navigation">
-  <li><a href="<%= sounds_path %>">Home</a></li>
-  <li><a href="#">Search</a></li>
-  <% if current_user %>
-  <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
-  <li><%= link_to "Logout", :logout, method: :post %></li>
-  <%  else %>
-  <li><%= link_to "Sign Up", new_user_path %> </li>
-  <li><%= link_to "Login", :login %> </li>
-  <% end %>
-</ul>
+    <h1>Echoes</h1>
+    <ul class="navigation">
+      <li><a href="<%= sounds_path %>">Home</a></li>
+      <li><a href="#">Search</a></li>
+      <% if current_user %>
+      <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
+      <li><%= link_to "Logout", :logout, method: :post %></li>
+      <%  else %>
+      <li><%= link_to "Sign Up", new_user_path %> </li>
+      <li><%= link_to "Login", :login %> </li>
+      <% end %>
+    </ul>
 
-</header>
-
-
+  </header>
 
 
-<%= yield %>
 
-<div>
-  <p id="notice"><%= flash[:notice] %></p>
-  <p id="alert"><%= flash[:alert] %></p>
-</div>
+
+  <%= yield %>
+
+  <div>
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
 
 </body>
 </html>
@@ -50,9 +50,4 @@
 </html>
 
 
-
-
-
-
-<div id=""></div>
 
