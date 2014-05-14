@@ -10,71 +10,31 @@
 <body>
 
   <header>
-
-    <div id="login">
           <h1>Echoes</h1>
-
-      <% if current_user %>
-        Logged in as <%= current_user.email %>.
-        <%= link_to "View Profile", user_path(current_user.id) %>
-        <%= link_to "Logout", :logout, method: :post %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_path %> |
-        <%= link_to "Login", :login %>
-      <% end %>
-
-    </div>
-
-  </header>
-
 <ul class="navigation">
-  <li><a href="#">Home</a></li>
+  <li><a href="<%= sounds_path %>">Home</a></li>
   <li><a href="#">Search</a></li>
-  <li><a href="#">Sign Up - Login</a></li>
+  <% if current_user %>
+  <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
+  <li><%= link_to "Logout", :logout, method: :post %></li>
+  <%  else %>
+  <li><%= link_to "Sign Up", new_user_path %> </li>
+  <li><%= link_to "Login", :login %> </li>
+  <% end %>
 </ul>
 
-
-<!-- 
-  <nav>
-    <ul class="navigation">
-      <li>
-        <%= link_to "Home", users_path %>
-        <ul>
-          <li><a href="" target="_blank">Item 1</a></li>
-          <li><a href="" target="_blank">Item 2</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="" target="_blank">Menu</a>
-        <ul>
-          <li><a href="" target="_blank"></a></li>
-          <li><a href="" target="_blank">Item 2</a></li>
-          <li><a href="" target="_blank">Item 3</a></li>
-
-        </ul>
-      </li>
-      <li>
-        <a href="" target="_blank">Signup - Login</a>
-        <ul>
-          <li> <%= link_to "Sign Up", new_user_path %> </li>
-          <li> <%= link_to "Login", :login %> </li>
-
-        </ul>
-      </li>
-    </ul>
-  </nav>
- -->
+</header>
 
 
 
 
-  <%= yield %>
+<%= yield %>
 
-  <div>
-    <p id="notice"><%= flash[:notice] %></p>
-    <p id="alert"><%= flash[:alert] %></p>
-  </div>
-  
+<div>
+  <p id="notice"><%= flash[:notice] %></p>
+  <p id="alert"><%= flash[:alert] %></p>
+</div>
+
 </body>
 </html>
 
@@ -90,4 +50,8 @@
 
 
 
+
+
+
+<div id=""></div>
 

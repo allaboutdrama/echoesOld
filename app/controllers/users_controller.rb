@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create]
+  skip_before_filter :require_login, only: [:index, :new] #:create]
 
   def index
     @users = User.all
@@ -25,9 +25,23 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
+
   def update
+    @user = User.find(params[:id])
+
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
+
+    if @user.save
+      redirect_to @user
+    else
+      render 'edit'
+    end  
   end
 
   def destroy
@@ -40,3 +54,9 @@ class UsersController < ApplicationController
   end
 
 end
+
+
+
+
+
+

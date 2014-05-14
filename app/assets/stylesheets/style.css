@@ -184,7 +184,8 @@ header {
 */
 
 
-h1 {
+header > h1 {
+  display: block;
   color: red;
 }
 
@@ -199,3 +200,10 @@ footer {
   right: 0;
   margin-bottom: 0;
 }
+
+
+
+
+
+
+

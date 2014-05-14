@@ -1,8 +1,17 @@
 <h1>Sounds</h1>
 
+<%= button_tag "Find Sounds Near Me", id: "current_location" %>
 
-<% @sounds.each do |sound| %>
+<hr>
 
-<%= link_to sound.name, sound_path(sound) %>
-<%= sound.description %>    
-<% end %>
+<p>Sounds Near You</p>
+
+<div id="sounds-near-user"></div>
+
+<p>All Sounds</p>
+
+<section id="sound-list">
+
+  <%= render @sounds %>
+
+</section>

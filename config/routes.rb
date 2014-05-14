@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => 'users#index'
+  root :to => 'sounds#index'
 
   resources :user_sessions
   resources :users
