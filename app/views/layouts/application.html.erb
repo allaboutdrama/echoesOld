@@ -13,8 +13,8 @@
   <header>
     <h1>Echoes</h1>
     <ul class="navigation">
-      <li><a href="<%= sounds_path %>">Home</a></li>
-      <li><a href="#">Search</a></li>
+      <li><a href="<%= new_sound_path %>">Upload</a></li>
+      <li><a href="<%= @nearby_sounds %>">Find</a></li>
       <% if current_user %>
       <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
       <li><%= link_to "Logout", :logout, method: :post %></li>
