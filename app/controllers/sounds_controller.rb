@@ -1,5 +1,5 @@
 class SoundsController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new, :create, :show]
+  skip_before_filter :require_login, only: [:index, :create, :show]
 
   def index
     @sounds = if params[:search]
@@ -20,10 +20,12 @@ class SoundsController < ApplicationController
 
   def new
     @sound = Sound.new
+    @sound.user_id = current_user
   end
 
   def create
     @sound = Sound.new(user_params)
+    @sound.user_id = current_user
 
     if @sound.save 
       redirect_to(:sounds, notice: 'Your echo has been created')
@@ -57,6 +59,10 @@ class SoundsController < ApplicationController
   end
 
   def destroy
+    @sound = Sound.find(params[:id])
+    @sound.destroy
+
+    redirect_to sounds_path
   end
 end
 
