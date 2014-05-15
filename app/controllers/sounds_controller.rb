@@ -20,12 +20,12 @@ class SoundsController < ApplicationController
 
   def new
     @sound = Sound.new
-    @sound.user_id = current_user
+    @sound.user = current_user
   end
 
   def create
     @sound = Sound.new(user_params)
-    @sound.user_id = current_user
+    @sound.user = current_user
 
     if @sound.save 
       redirect_to(:sounds, notice: 'Your echo has been created')
