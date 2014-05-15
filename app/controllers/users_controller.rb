@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, only: [:index, :new] #:create]
+  skip_before_filter :require_login, only: [:index, :new, :create]
 
   def index
     @users = User.all
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save 
-      login(@user.email, user_params[:password])
+     login(@user.email, user_params[:password])
       redirect_to(user_path(@user), notice: 'Welcome to the World of Echoes')
     else
       render action: 'new'  

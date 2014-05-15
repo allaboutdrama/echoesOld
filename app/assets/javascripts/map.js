@@ -1,5 +1,6 @@
 var map;
 var markers = [];
+var coords = [];
 
 function initializeMap() {
   var addMarker = true && showMarker;
