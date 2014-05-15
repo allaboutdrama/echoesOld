@@ -2,17 +2,15 @@
 
 <%= button_tag "Find Sounds Near Me", id: "current_location" %>
 
-
-
-<p>Sounds Near You</p>
-
-
+<br>
 <div id="sounds-near-user"> 
+
 </div>
+
 <br>
 
 <div id="map-canvas"></div>
- 
+
 
 <hr>
 <p>All Sounds</p>
@@ -25,9 +23,9 @@
 
 
 <%= javascript_tag do %>
-  window.latitude = <%= @sounds.first.latitude.to_f %>;
-  window.longitude = <%= @sounds.first.longitude.to_f %>;
-  window.showMarker = true;
+window.latitude = <%= @sounds.first.latitude.to_f %>;
+window.longitude = <%= @sounds.first.longitude.to_f %>;
+window.showMarker = true;
 
 
 <% end %>

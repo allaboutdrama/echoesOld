@@ -34,8 +34,11 @@ class UsersController < ApplicationController
 
     @user.name = params[:user][:name]
     @user.email = params[:user][:email]
+    @user.city = params[:user][:city]
+    @user.country = params[:user][:country]
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
+
 
     if @user.save
       redirect_to @user

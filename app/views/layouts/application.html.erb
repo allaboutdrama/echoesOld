@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Echoes</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api}&sensor=false" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
