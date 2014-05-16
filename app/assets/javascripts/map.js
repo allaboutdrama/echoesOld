@@ -5,7 +5,7 @@ var coords = [];
 function initializeMap() {
   var addMarker = true && showMarker;
   var mapOptions = {
-    zoom: 15,
+    zoom: 14,
     center: new google.maps.LatLng(latitude, longitude),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };

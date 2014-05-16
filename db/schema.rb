@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140515174204) do
 
   create_table "sounds", force: true do |t|
     t.string   "name"
-    t.decimal  "latitude",    precision: 9, scale: 6
+    t.decimal  "latitude",    branc
     t.decimal  "longitude",   precision: 9, scale: 6
     t.text     "description"
     t.string   "image_url"

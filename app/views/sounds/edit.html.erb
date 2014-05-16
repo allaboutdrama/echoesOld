@@ -1,4 +1,4 @@
-<h2> Edit Sound Information <%= @sound.id %> </h2>
+<h2> Edit: "<%= @sound.name %>"" </h2>
 
 <%= form_for :sound, url: sound_path, method: :patch do |f| %>
 
@@ -30,6 +30,7 @@
   <%= f.label :description %><br>
   <%= f.text_field :description %>
 </p>
+
 
 
 <p>

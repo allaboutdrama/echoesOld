@@ -22,34 +22,8 @@
 }
 
 .navigation a:hover {
-  background: darken(deepskyblue, 5%);
+  background: darken(deepskyblue, 6%);
 }
-
-@media all and (max-width: 800px) {
-  .navigation {
-    justify-content: space-around;
-  }
-}
-
-@media all and (max-width: 600px) {
-  .navigation {
-    -webkit-flex-flow: column wrap;
-    padding: 0;
-  }
-  
-  .navigation a { 
-    text-align: center; 
-    padding: 10px;
-    border-top: 1px solid rgba(255,255,255,0.3); 
-    border-bottom: 1px solid rgba(0,0,0,0.1); 
-  }
-
-  
-  .navigation li:last-of-type a {
-    border-bottom: none;
-  }
-}
-
 
 header > h1 {
   display: block;
@@ -60,7 +34,7 @@ header > h1 {
 
 footer {
   position:fixed;
-  height: 50px;
+  height: 20px;
   background-color: deepskyblue;
   bottom: 0px;
   left: 0;
@@ -70,9 +44,45 @@ footer {
 
 
 #map-canvas{
-  height: 45vh;
+  height: 40vh;
   width: 100vw;
 }
+
+
+/*
+@media all and (max-width: 800px) {
+  .navigation {
+    justify-content: space-around;
+  }
+}
+*/
+@media all and (max-width: 600px) {
+  .navigation {
+    -webkit-flex-flow: column wrap;
+    padding: 0;
+  }
+  
+  .navigation a { 
+    text-align: center; 
+    padding: 2px;
+    border-top: 1px solid rgba(255,255,255,0.3); 
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
+  }
+
+  
+  .navigation li:last-of-type a {
+    border-bottom: none;
+  }
+
+#map-canvas{
+  height: 15vh;
+  width: 100vw;
+}
+
+
+
+}
+
 
 /*
 #login > h1 {

@@ -1,31 +1,23 @@
-<h2> <%= @sound.name %> </h2>
-
-<p>
-  <strong>Description: </strong>
-  <%= @sound.description %>
+<p> <b> <%= @sound.name %>:</b> <%= @sound.description %></p>
 </p>
 
 <p>
-  <strong>Latitude: </strong>
-  <%= @sound.latitude %>
-</p>
-<p>
-  <strong>Longitude: </strong>
-  <%= @sound.longitude %>
-</p>
+  <audio src="<%= @sound.sound_url %>" controls>
+ </p>
 
-
-<div>
-  <audio src="<%= @sound.sound_url %>" id="demo"></audio>
-  <button onclick="document.getElementById('demo').play()">Play the Audio</button>
-  <button onclick="document.getElementById('demo').pause()">Pause the Audio</button>
-  <button onclick="document.getElementById('demo').volume+=0.1">Increase Volume</button>
-  <button onclick="document.getElementById('demo').volume-=0.1">Decrease Volume</button>
+<div id="map-canvas">  
 </div>
 
-<div id="map-canvas">
-  
-</div>
+<% if @nearby_sounds.present? %>
+  <h2>Nearby Sounds</h2>
+  <ul>
+  <% @nearby_sounds.each do |ns| %>
+    <li><%= link_to "#{ns.name}", ns %>: <%= "#{ns.distance}" %> <@=</li>
+  <% end %>
+  </ul>
+<% end %>
+
+Creator: <%= link_to @sound.user.name, user_path(@sound.user) %>
 
 
 <p>
@@ -35,15 +27,6 @@
 </p>
 
 
-
-<% if @nearby_sounds.present? %>
-  <h2>Nearby Sounds</h2>
-  <ul>
-  <% @nearby_sounds.each do |ns| %>
-    <li><%= "#{ns.name}, #{ns.distance}" %></li>
-  <% end %>
-  </ul>
-<% end %>
 
 
 
