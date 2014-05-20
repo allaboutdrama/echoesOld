@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  geocoded_by :city 
+  after_validation :geocode
 end

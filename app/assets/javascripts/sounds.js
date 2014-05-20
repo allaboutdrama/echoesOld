@@ -1,33 +1,25 @@
-$(document).ready(function() {
+// if (navigator.geolocation) {
+//   var timeoutVal = 10 * 1000 * 1000;
+//   navigator.geolocation.getCurrentPosition(
+//     displayPosition, 
+//     displayError,
+//     { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+//   );
+// }
+// else {
+//   alert("Geolocation is not supported by this browser");
+// }
 
-  function geolocationSuccess(position) {
-    var latitude = position.coords.latitude;
-    var longitude = position.coords.longitude;
+// function displayPosition(position) {
+//   alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+// }
 
-    $.ajax({
-      url: "/sounds",
-      method: 'GET',
-      data: {
-        latitude: latitude,
-        longitude: longitude,
-      },
-      dataType: 'script'
-    });
-  }
+// function displayError(error) {
+//   var errors = { 
+//     1: 'Permission denied',
+//     2: 'Position unavailable',
+//     3: 'Request timeout'
+//   };
+//   alert("Error: " + errors[error.code]);
+// }
 
-  function geolocationError(error) {
-    console.log("There was an error :( ");
-  }
-
-    $('#current_location').click(function() {
-
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError);
-  } else {
-    alert("Your browser doesn't support Geolocation. Use Google Chrome instead");
-  }
-
-  });
-
-
-});

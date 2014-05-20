@@ -1,23 +1,4 @@
-<hr>
-
-<div id="map-canvas"></div>
-<hr>
-
-<section id="sound-list">
-  <h2>Newest Sounds</h2>
-  <% @newest_sounds.each do |s| %>
-  <li><%= link_to s.name, sound_path(s) %></li>
-  <% end %>
-</section>
-
-
-<%= javascript_tag do %>
-window.latitude = <%= @newest_sounds.first.latitude.to_f %>;
-window.longitude = <%= @newest_sounds.first.longitude.to_f %>;
-window.showMarker = true;    
-<% end %>
-
-<script>if (navigator.geolocation) {
+if (navigator.geolocation) {
   var timeoutVal = 10 * 1000 * 1000;
   navigator.geolocation.getCurrentPosition(
     displayPosition, 
@@ -31,6 +12,7 @@ else {
 
 function displayPosition(position) {
   alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+  
 }
 
 function displayError(error) {
@@ -42,4 +24,3 @@ function displayError(error) {
   alert("Error: " + errors[error.code]);
 }
 
-</script>

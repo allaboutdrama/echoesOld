@@ -3,6 +3,9 @@ var markers = [];
 var coords = [];
 
 function initializeMap() {
+
+  var image = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+
   var addMarker = true && showMarker;
   var mapOptions = {
     zoom: 15,
@@ -14,15 +17,16 @@ function initializeMap() {
   if (addMarker) {
     var myMarker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
-        map: map
+        map: map,
+        icon: image
     });
 
     markers.push(myMarker);
   }
 }
 
-function addMarkers(coords) {
 
+function addMarkers(coords) {
   var image = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
 
   coords.forEach(function(coord){

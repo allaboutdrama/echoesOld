@@ -1,4 +1,4 @@
-$('#sounds-near-user').html("<%= j(render :partial => 'sounds_near_user') %>");
+$('#sound-list').html("<%= j(render :partial => 'sounds_near_user') %>");
  
 var coords = window.coords = <%= raw @sounds.map {|r| {latitude: r.latitude.to_f, longitude: r.longitude.to_f}}.to_json %>;
 clearMarkers(coords);
