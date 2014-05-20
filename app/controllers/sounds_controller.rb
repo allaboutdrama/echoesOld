@@ -5,15 +5,9 @@ class SoundsController < ApplicationController
     @sounds = if params[:latitude] && params[:longitude] 
        Sound.near([params[:latitude], params[:longitude]], 0.5)
     else
-    Sound.all    
+      Sound.all    
     end
-
-    @user_geo_lat = params[:latitude]
-    @user_geo_long = params[:longitude]
-
-    @newest_sounds = Sound.last(5).reverse
-    
-    
+        
     respond_to do |format|
       format.html
       format.js 
@@ -23,6 +17,9 @@ class SoundsController < ApplicationController
   def new
     @sound = Sound.new
     @sound.user = current_user
+    location = request.location
+    @sound.latitude = location.latitude
+    @sound.longitude = location.longitude
   end
 
   def create

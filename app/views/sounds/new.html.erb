@@ -37,7 +37,7 @@
 
 <div class="form_field">
   <%= f.label :latitude %>
-  <%= f.text_field :latitude %>
+  <%= f.text_field :latitude  %>
 </div>
 
 <div class="form_field">
@@ -93,7 +93,6 @@
     
     // create WAV download link using audio data blob
     createDownloadLink();
-    
     recorder.clear();
   }
 
@@ -112,6 +111,13 @@
       li.appendChild(au);
       li.appendChild(hf);
       recordingslist.appendChild(li);
+
+      // instead of creating a download link, we should
+      // update the form and append this blob to it!
+
+      form = $('#new_sound')[0];
+      var formData = new FormData(form);
+      formData.append('sound_file', blob);
     });
   }
 

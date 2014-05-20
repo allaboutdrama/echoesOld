@@ -4,7 +4,7 @@ var coords = [];
 
 function initializeMap() {
 
-  var image = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+  var image = 'https://s3-us-west-2.amazonaws.com/allaboutdrama/echoes/images/icons/green-audio-icon.png';
 
   var addMarker = true && showMarker;
   var mapOptions = {
@@ -27,7 +27,7 @@ function initializeMap() {
 
 
 function addMarkers(coords) {
-  var image = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+  var image = 'https://s3-us-west-2.amazonaws.com/allaboutdrama/echoes/images/icons/dark-blue-audio-icon.png';
 
   coords.forEach(function(coord){
     var myMarker = new google.maps.Marker({

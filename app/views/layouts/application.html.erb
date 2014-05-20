@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Echoes</title>
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=#{Figaro.env.google_maps_api}&sensor=false" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
@@ -12,16 +12,18 @@
 <body>
 
   <header>
-<!--     <h1>Echoes</h1> -->
+    <!--     <h1>Echoes</h1> -->
     <ul class="navigation">
-    <li><a id="current_location"`>Find Nearby Sounds</a></li>  
       <li><a href="<%= new_sound_path %>">Upload</a></li>      
       <% if current_user %>
+      <li><%= link_to "Home", sounds_path %> </li>
       <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
       <li><%= link_to "Logout", :logout, method: :post %></li>
       <%  else %>
+      <li><%= link_to "Home", users_path %> </li>
       <li><%= link_to "Sign Up", new_user_path %> </li>
       <li><%= link_to "Login", :login %> </li>
+      <li><a id="current_location"`>Find Nearby Sounds</a></li>  
       <% end %>
     </ul>
 
