@@ -3,6 +3,9 @@ var markers = [];
 var coords = [];
 
 function initializeMap() {
+
+  var image = 'https://s3-us-west-2.amazonaws.com/allaboutdrama/echoes/images/icons/green-audio-icon.png';
+
   var addMarker = true && showMarker;
   var mapOptions = {
     zoom: 14,
@@ -14,16 +17,17 @@ function initializeMap() {
   if (addMarker) {
     var myMarker = new google.maps.Marker({
         position: new google.maps.LatLng(latitude, longitude),
-        map: map
+        map: map,
+        icon: image
     });
 
     markers.push(myMarker);
   }
 }
 
-function addMarkers(coords) {
 
-  var image = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+function addMarkers(coords) {
+  var image = 'https://s3-us-west-2.amazonaws.com/allaboutdrama/echoes/images/icons/dark-blue-audio-icon.png';
 
   coords.forEach(function(coord){
     var myMarker = new google.maps.Marker({

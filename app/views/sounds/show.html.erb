@@ -1,5 +1,4 @@
 <p> <b> <%= @sound.name %>:</b> <%= @sound.description %></p>
-</p>
 
 <p>
   <audio src="<%= @sound.sound_url %>" controls>
@@ -12,30 +11,24 @@
   <h2>Nearby Sounds</h2>
   <ul>
   <% @nearby_sounds.each do |ns| %>
-    <li><%= link_to "#{ns.name}", ns %>: <%= "#{ns.distance}" %> <@=</li>
+    <li><%= link_to "#{ns.name}", ns %>: <%= "#{ns.distance} kms" %></li>
   <% end %>
   </ul>
 <% end %>
 
 Creator: <%= link_to @sound.user.name, user_path(@sound.user) %>
 
-
-<p>
+<p >
   <%= link_to "Edit", edit_sound_path %>
   <%= link_to 'Delete', sound_path, method: :delete, data: { confirm: 'Are you sure?' } %>
   
 </p>
-
-
-
-
 
 <%= javascript_tag do %>
   window.latitude = <%= @sound.latitude.to_f %>;
   window.longitude = <%= @sound.longitude.to_f %>;
   window.showMarker = true;
 
-   window.coords = <%= raw @nearby_sounds.map {|r| {latitude: r.latitude.to_f, longitude: r.longitude.to_f}}.to_json %>
+  window.coords = <%= raw @nearby_sounds.map {|r| {latitude: r.latitude.to_f, longitude: r.longitude.to_f}}.to_json %>
 
 <% end %>
-

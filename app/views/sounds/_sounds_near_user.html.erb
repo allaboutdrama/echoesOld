@@ -1,8 +1,0 @@
-<% nearby_sounds = Sound.near([@user_geo_lat, @user_geo_long], 1) %>
-<% nearby_sounds.each do |nearby_sound| %>
-  <%= link_to nearby_sound.name, nearby_sound  %> <%=nearby_sound.description %><br>
-<% end %>
-
-
-<!-- 
-to delete  -->

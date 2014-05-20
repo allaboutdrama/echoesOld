@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-  end
+
+    @user_geo_lat = params[:latitude]
+    @user_geo_long = params[:longitude]
+    
+  end  
 
   def new
     @user = User.new 
@@ -14,47 +18,48 @@ class UsersController < ApplicationController
 
     if @user.save 
      login(@user.email, user_params[:password])
-      redirect_to(user_path(@user), notice: 'Welcome to the World of Echoes')
-    else
-      render action: 'new'  
-    end
+     redirect_to(user_path(@user), notice: 'Welcome to the World of Echoes')
+   else
+    render action: 'new'  
   end
+end
 
-  def show
-    @user = User.find(params[:id])
-  end
+def show
+  @user = User.find(params[:id])
+end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
-
-  def update
-    @user = User.find(params[:id])
-
-    @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
-    @user.city = params[:user][:city]
-    @user.country = params[:user][:country]
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
+def edit
+  @user = User.find(params[:id])
+end
 
 
-    if @user.save
-      redirect_to @user
-    else
-      render 'edit'
-    end  
-  end
+def update
+  @user = User.find(params[:id])
 
-  def destroy
-  end
+  @user.name = params[:user][:name]
+  @user.email = params[:user][:email]
+  @user.city = params[:user][:city]
+  @user.country = params[:user][:country]
+  @user.description = params[:user][:description]
+  @user.password = params[:user][:password]
+  @user.password_confirmation = params[:user][:password_confirmation]
 
-  private 
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
+  if @user.save
+    redirect_to @user
+  else
+    render 'edit'
+  end  
+end
+
+def destroy
+end
+
+private 
+
+def user_params
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :city, :country, :latitude, :longitude)
+end
 
 end
 

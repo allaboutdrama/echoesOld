@@ -1,28 +1,32 @@
-<!-- 
-<%= button_tag "Find Sounds Near Me", id: "current_location" %>
 
- -->
- <hr>
+<hr>
 
 
 <div id="map-canvas"></div>
-
-
 <hr>
-Explore Sounds:
 
 <section id="sound-list">
-
-  <%= render @sounds %>
-
+ <h2>Sounds</h2>
+ <%= render @sounds %>
 </section>
 
 
 <%= javascript_tag do %>
-window.latitude = <%= @sounds.first.latitude.to_f %>;
-window.longitude = <%= @sounds.first.longitude.to_f %>;
-window.showMarker = true;
+  window.latitude = <%= @sounds.last.latitude.to_f %>;
+  window.longitude = <%= @sounds.last.longitude.to_f %>;
+  window.showMarker = true;    
 
-
+  if (navigator.geolocation) {
+    var timeoutVal = 10 * 1000 * 1000;
+    navigator.geolocation.getCurrentPosition(
+      displayPosition, 
+      displayError,
+      { enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+    );
+  }
+  else {
+    alert("Geolocation is not supported by this browser");
+  }
+  
 <% end %>
 
