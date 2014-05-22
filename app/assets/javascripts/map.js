@@ -4,7 +4,7 @@ var coords = [];
 
 function initializeMap() {
 
-  var image = 'https://s3-us-west-2.amazonaws.com/allaboutdrama/echoes/images/icons/green-audio-icon.png';
+  var image = 'https://s3-us-west-2.amazonaws.com/allaboutdrama/echoes/images/icons/magenta-audio-icon.png';
 
   var addMarker = true && showMarker;
   var mapOptions = {

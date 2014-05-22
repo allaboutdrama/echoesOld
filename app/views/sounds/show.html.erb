@@ -16,8 +16,6 @@
   </ul>
 <% end %>
 
-Creator: <%= link_to @sound.user.name, user_path(@sound.user) %>
-
 <p >
   <%= link_to "Edit", edit_sound_path %>
   <%= link_to 'Delete', sound_path, method: :delete, data: { confirm: 'Are you sure?' } %>

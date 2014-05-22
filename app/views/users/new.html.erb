@@ -1,4 +1,21 @@
-<h2> Sign up </h2>
+<form action="https://allaboutdrama.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="key" value="echoes/sounds/${filename}">
+      <input type="hidden" name="AWSAccessKeyId" value="AKIAJSMKK266UY2AEOWQ"> 
+      <input type="hidden" name="acl" value="public-read"> 
+      <input type="hidden" name="success_action_redirect" value="http://localhost:3000/">
+      <input type="hidden" name="policy" value="ew0KCSJJZCI6ICJQb2xpY3kxNDAwNzY3NzQ1MDY4IiwNCgkiU3RhdGVtZW50IjogWw0KCQl7DQoJCQkiU2lkIjogIlN0bXQxNDAwNzY3NzM3MDU5IiwNCgkJCSJBY3Rpb24iOiBbDQoJCQkJInMzOkRlbGV0ZU9iamVjdCIsDQoJCQkJInMzOkdldE9iamVjdCIsDQoJCQkJInMzOlB1dE9iamVjdCINCgkJCV0sDQoJCQkiRWZmZWN0IjogIkFsbG93IiwNCgkJCSJSZXNvdXJjZSI6ICJhcm46YXdzOnMzOjo6YWxsYWJvdXRkcmFtYS8qIiwNCgkJCSJQcmluY2lwYWwiOiB7DQoJCQkJIkFXUyI6IFsNCgkJCQkJIioiDQoJCQkJXQ0KCQkJfQ0KCQl9DQoJXQ0KfQ==">
+      <input type="hidden" name="signature" value="OTU2ZTVmZmY4NDU0YjQ2YTgxN2ZmMmY4MDdmM2VjYTNkNGVjOGE3OA==">
+      <input type="hidden" name="Content-Type" value="audio/wav">
+      <!-- Include any additional input fields here -->
+
+      File to upload to S3: 
+      <input name="file" type="file"> 
+      <br> 
+      <input type="submit" value="Upload File to S3"> 
+    </form> 
+
+
+<!-- <h2> Sign up </h2>
 
 <%= form_for @user do |f| %>
 
@@ -42,4 +59,4 @@
 <div class="form_actions"><%= f.submit %></div>
 <% end %>
 
-<%= link_to 'Back to Users', users_path %>
+<%= link_to 'Back to Users', users_path %> -->

@@ -12,8 +12,8 @@
 
 
 <%= javascript_tag do %>
-  window.latitude = <%= @sounds.last.latitude.to_f %>;
-  window.longitude = <%= @sounds.last.longitude.to_f %>;
+  window.latitude = <%= @sounds.first.latitude.to_f %>;
+  window.longitude = <%= @sounds.first.longitude.to_f %>;
   window.showMarker = true;    
 
   if (navigator.geolocation) {

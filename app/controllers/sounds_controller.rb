@@ -35,7 +35,7 @@ class SoundsController < ApplicationController
 
   def show
     @sound = Sound.find(params[:id])
-    @nearby_sounds = @sound.nearbys(1, :units => :km)
+    @nearby_sounds = @sound.nearbys(3, :units => :km)
   end
 
 
