@@ -1,5 +1,5 @@
 <h1>Create a new sound</h1>
- 
+
 <%= form_for @sound do |f| %>
 <% if @sound.errors.any? %>
 <div class="error_messages">
@@ -26,10 +26,10 @@
 
 <h2>Log</h2>
 <pre id="log"></pre>
-
+<!-- 
 <form action="https://allaboutdrama.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
       <input type="hidden" name="key" value="echoes/sounds/${filename}">
-      <input type="hidden" name="AWSAccessKeyId" value="AKIAJSMKK266UY2AEOWQ"> 
+      <input type="hidden" name="AWSAccessKeyId" value=","> 
       <input type="hidden" name="acl" value="public-read"> 
       <input type="hidden" name="success_action_redirect" value="http://localhost:3000/">
       <input type="hidden" name="policy" value="ew0KICAiSWQiOiAiUG9saWN5MTQwMDc2Nzc0NTA2OCIsDQogICJTdGF0ZW1lbnQiOiBbDQogICAgew0KICAgICAgIlNpZCI6ICJTdG10MTQwMDc2NzczNzA1OSIsDQogICAgICAiQWN0aW9uIjogWw0KICAgICAgICAiczM6RGVsZXRlT2JqZWN0IiwNCiAgICAgICAgInMzOkdldE9iamVjdCIsDQogICAgICAgICJzMzpQdXRPYmplY3QiDQogICAgICBdLA0KICAgICAgIkVmZmVjdCI6ICJBbGxvdyIsDQogICAgICAiUmVzb3VyY2UiOiAiYXJuOmF3czpzMzo6OmFsbGFib3V0ZHJhbWEvKiIsDQogICAgICAiUHJpbmNpcGFsIjogew0KICAgICAgICAiQVdTIjogWw0KICAgICAgICAgICIqIg0KICAgICAgICBdDQogICAgICB9DQogICAgfQ0KICBdDQp9">
@@ -37,44 +37,40 @@
       <input type="hidden" name="Content-Type" value="audio/wav">
       <!-- Include any additional input fields here -->
 
-      File to upload to S3: 
+  <!--     File to upload to S3: 
       <input name="file" type="file"> 
       <br> 
       <input type="submit" value="Upload File to S3"> 
     </form> 
+  -->
 
+  <div class="form_field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
 
-<!-- 
-<div class="form_field">
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-</div>
-
-<div class="form_field">
-  <%= f.label :sound_url %>
-  <%= f.text_field :sound_url %>
-</div>
-
-<div class="form_field">
-  <%= f.label :latitude %>
-  <%= f.text_field :latitude  %>
-</div>
-
-<div class="form_field">
-  <%= f.label :longitude%>
-  <%= f.text_field :longitude %>
-</div>
-
-<div class="form_field">
-  <%= f.label :description%>
-  <%= f.text_field :description %>
-</div>
+  <div class="form_field">
+    <%#= f.file_field :echo, id: "echo-file-field" %>
+  </div>
 
 
 
-<div class="form_actions"><%= f.submit %></div>
-<% end %>
+    <%= f.hidden_field :latitude  %>
 
+
+    <%= f.hidden_field :longitude %>
+
+
+  <div class="form_field">
+    <%= f.label :description%>
+    <%= f.text_field :description %>
+  </div>
+
+
+
+  <div class="form_actions"><%= f.submit "Create Sound", {id: 'submit_new_sound'} %></div>
+  <% end %>
+-->
 <%= link_to 'Back to Sounds', sounds_path %>
 
 <!-- 
@@ -260,10 +256,30 @@ window.onkeydown = function(e){
         li.appendChild(hf);
         recordingslist.appendChild(li);
 
+        // var fd = new FormData();
+        // fd.append("echo", window.blob);        
 
+        // $.ajax({
+        //     url: '/sounds/create_via_blob',
+        //     type: 'POST',
+        //     data: fd,
+        //     processData: false,
+        //     contentType: false
+        //   });  
 
+}
+}
 
+function dataURLtoBlob(dataURL) {
+      // Decode the dataURL    
+      var binary = atob(dataURL.split(',')[1]);
+      // Create 8-bit unsigned array
+      var array = [];
+      for(var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
       }
+      // Return our Blob object
+      return new Blob([new Uint8Array(array)], {type: 'audio/wav'});
     }
 
     function interleave(leftChannel, rightChannel){
@@ -339,14 +355,14 @@ window.onkeydown = function(e){
 // request.open("POST", "http://some.url/");  
 // request.send(formData);
 
-$('#submit_s3_form').click(function(ev) {
+$('#submit_new_sound').click(function(ev) {
   ev.preventDefault();
 
-  var formData = new FormData($('#s3_form')[0]);
-  formData.append("sound_file", blob, filename);
-  
+  var formData = new FormData($('#new_sound')[0]);
+  formData.append("echo", window.blob, window.filename);
+  console.log(formData);
   $.ajax({
-    url: 'http://allaboutdrama.s3.amazonaws.com/',
+    url: '/sounds',
     type: 'POST',
     data: formData,
     processData: false,
@@ -355,3 +371,38 @@ $('#submit_s3_form').click(function(ev) {
 })
 
 </script>
+
+
+<%= javascript_tag do %>
+
+  function updateSoundLocation(position){
+    $('#sound_latitude').val(position.coords.latitude),
+    $('#sound_longitude').val(position.coords.longitude)
+  }
+
+  function displayError(error) {
+    var errors = { 
+    1: 'Permission denied',
+    2: 'Position unavailable',
+    3: 'Request timeout'
+    };
+    alert("Error: " + errors[error.code]);
+  }
+
+
+if (navigator.geolocation) {
+var timeoutVal = 10 * 1000 * 1000;
+navigator.geolocation.getCurrentPosition(
+updateSoundLocation,
+displayError,
+{ enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+);
+}
+else {
+alert("Geolocation is not supported by this browser");
+}
+
+
+
+
+<% end %>

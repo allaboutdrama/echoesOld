@@ -17,17 +17,24 @@ class SoundsController < ApplicationController
   def new
     @sound = Sound.new
     @sound.user = current_user
-    location = request.location
-    @sound.latitude = location.latitude
-    @sound.longitude = location.longitude
+   # assign_location
+  end
+
+  def create_via_blob
+    @sound = Sound.new
+    @sound.user_id = current_user.id
+    @sound.echo = params[:echo]
+    @sound.save
+    render :js => "window.location = '/sounds/#{@sound.id}/edit'"
   end
 
   def create
-    @sound = Sound.new(user_params)
+    @sound = Sound.new(sound_params)
     @sound.user = current_user
+    @sound.echo = params[:echo]
 
-    if @sound.save 
-      redirect_to(:sounds, notice: 'Your echo has been created')
+    if @sound.save
+      render :js => "window.location = '/sounds/#{@sound.id}'"
     else
       render action: 'new'   
     end
@@ -64,10 +71,20 @@ class SoundsController < ApplicationController
 
     redirect_to sounds_path
   end
+
+  private
+
+  def sound_params
+    params.require(:sound).permit(:name, :description, :latitude, :longitude, :sound_url)
+  end
+
+  # def assign_location
+  #   location = request.location
+  #   @sound.latitude = location.latitude
+  #   @sound.longitude = location.longitude    
+  # end
+
 end
 
 
-private
-def user_params
-  params.require(:sound).permit(:name, :description, :latitude, :longitude, :sound_url)
-end
+
