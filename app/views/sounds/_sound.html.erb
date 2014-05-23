@@ -1,4 +1,10 @@
 <p>  
-<%= link_to sound.name, sound_path(sound) %> <br>
-<%= sound.description %> <br>   
+ <% if sound.echo_url != nil %>
+   <%= audio_tag(sound.echo, controls: true) %> 
+ <% else %>
+  <%= audio_tag(sound.sound_url, controls: true) %> 
+ <% end %>
+  
+<%= link_to sound.name, sound_path(sound) %> 
+
 </p>

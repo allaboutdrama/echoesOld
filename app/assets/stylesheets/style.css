@@ -31,7 +31,6 @@ header > h1 {
 }
 
 
-
 footer {
   position:fixed;
   height: 20px;
@@ -40,15 +39,42 @@ footer {
   left: 0;
   right: 0;
   margin-bottom: 0;
+    color: white;
+    font-size: 1em;
+    padding: 0.3em;
 }
 
+#container{
+  width: 90%;
+  margin: 0, auto;
+
+}
 
 #map-canvas{
   height: 40vh;
   width: 100vw;
 }
 
+#sound-list{
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+width: 100%;
+  margin: 0, auto;
 
+}
+
+audio {
+  width: 50%;
+  margin: 0, auto;
+}
+
+/*#audio-text{
+  width: 40%;
+  margin: 0, auto; 
+}
+*/
 /*
 @media all and (max-width: 800px) {
   .navigation {
@@ -74,10 +100,10 @@ footer {
     border-bottom: none;
   }
 
-#map-canvas{
-  height: 15vh;
-  width: 100vw;
-}
+  #map-canvas{
+    height: 15vh;
+    width: 100vw;
+  }
 
 
 

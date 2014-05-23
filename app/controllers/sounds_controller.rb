@@ -2,8 +2,11 @@ class SoundsController < ApplicationController
   skip_before_filter :require_login, only: [:index, :create, :show]
 
   def index
+    @sound = Sound.new
+
+    @sound.echo = params[:echo]
     @sounds = if params[:latitude] && params[:longitude] 
-       Sound.near([params[:latitude], params[:longitude]], 1)
+       Sound.near([params[:latitude], params[:longitude]], 0.5, ASC)
     else
       Sound.all    
     end
@@ -43,6 +46,8 @@ class SoundsController < ApplicationController
   def show
     @sound = Sound.find(params[:id])
     @nearby_sounds = @sound.nearbys(2, :units => :km)
+
+
   end
 
 
