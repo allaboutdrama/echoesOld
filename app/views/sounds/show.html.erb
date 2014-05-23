@@ -1,7 +1,11 @@
 <p> <b> <%= @sound.name %>:</b> <%= @sound.description %></p>
 
 <p>
-  <audio src="<%=@sound.echo%>" controls>
+ <% if @sound.echo_url != nil %>
+   <%= audio_tag(@sound.echo, controls: true) %> 
+ <% else %>
+  <%= audio_tag(@sound.sound_url, controls: true) %> 
+ <% end %>
  </p>
 
 

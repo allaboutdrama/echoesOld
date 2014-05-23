@@ -50,8 +50,10 @@ gem 'sorcery'
 # Add geolocation to library items
 gem 'geocoder'
 
-gem 'pry'
-gem 'pry-debugger'
+group :development, :test do
+  gem 'pry' 
+  gem 'pry-debugger'
+end
 
 gem 'figaro'
 
