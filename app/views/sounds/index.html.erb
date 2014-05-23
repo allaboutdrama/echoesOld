@@ -1,7 +1,4 @@
-
 <hr>
-
-
 <div id="map-canvas"></div>
 <hr>
 
@@ -9,7 +6,6 @@
  <h2>Sounds</h2>
  <%= render @sounds %>
 </section>
-
 
 <%= javascript_tag do %>
   window.latitude = <%= @sounds.first.latitude.to_f %>;

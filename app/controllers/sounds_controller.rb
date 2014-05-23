@@ -3,7 +3,7 @@ class SoundsController < ApplicationController
 
   def index
     @sounds = if params[:latitude] && params[:longitude] 
-       Sound.near([params[:latitude], params[:longitude]], 0.5)
+       Sound.near([params[:latitude], params[:longitude]], 1)
     else
       Sound.all    
     end
@@ -42,7 +42,7 @@ class SoundsController < ApplicationController
 
   def show
     @sound = Sound.find(params[:id])
-    @nearby_sounds = @sound.nearbys(3, :units => :km)
+    @nearby_sounds = @sound.nearbys(2, :units => :km)
   end
 
 

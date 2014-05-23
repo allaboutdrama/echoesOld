@@ -11,7 +11,7 @@
   <h2>Nearby Sounds</h2>
   <ul>
   <% @nearby_sounds.each do |ns| %>
-    <li><%= link_to "#{ns.name}", ns %>: <%= "#{ns.distance} kms" %></li>
+    <li><%= link_to "#{ns.name}", ns %>: <%= "#{(ns.distance * 100).round.to_f / 100} kms" %></li>
   <% end %>
   </ul>
 <% end %>
