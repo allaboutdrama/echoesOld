@@ -6,7 +6,7 @@ class SoundsController < ApplicationController
 
     @sound.echo = params[:echo]
     @sounds = if params[:latitude] && params[:longitude] 
-       Sound.near([params[:latitude], params[:longitude]], 0.5, ASC)
+       Sound.near([params[:latitude], params[:longitude]], 0.7, ASC)
     else
       Sound.all    
     end
