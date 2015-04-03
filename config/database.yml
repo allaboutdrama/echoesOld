@@ -10,5 +10,6 @@ test:
 
 production:
   adapter: postgresql
-  database: echoes_production
+  database: app-dev
   host: localhost
+  username: user 
