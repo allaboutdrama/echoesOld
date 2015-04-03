@@ -13,50 +13,26 @@
 
   <header>
     <!--     <h1>Echoes</h1> -->
-    <nav>
+    <ul class="navigation">     
       <% if current_user %>
-      <div class="nav-left"> 
-        <ul class="navigation"> 
-          <li><%= link_to "Home", sounds_path %> </li>  
-          <li><a href="<%= new_sound_path %>">Record</a></li>
-          <li><a id="current_location">Find Nearby Sounds</a></li> 
-        </ul>
-      </div>
-
-      <div class="nav-right">
-        <ul class="navigation"> 
-          <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
-          <li><%= link_to "Logout", :logout, method: :post %></li>
-        </ul>
-      </div>
-
-
+      <li><%= link_to "Home", sounds_path %> </li>  
+      <li><a href="<%= new_sound_path %>">Record</a></li>
+      <li><a id="current_location">Find Nearby Sounds</a></li> 
+      <li><%= link_to "View Profile", user_path(current_user.id) %></li> 
+      <li><%= link_to "Logout", :logout, method: :post %></li>
       <%  else %>
-      <div class="nav-left"> 
-        <ul class="navigation"> 
-          <li><a href="<%= new_sound_path %>">Share</a></li>   
-          <li><a id="current_location">Explore</a></li> 
-        </ul>
-      </div>
 
-      <div class="nav-right">
-        <ul class="navigation"> 
-          <li><%= link_to "Sign Up", new_user_path %> </li>
-          <li><%= link_to "Login", :login %> </li>
-        </ul>
-      </div>
+      <li><a href="<%= new_sound_path %>">Record</a></li>   
+      <li><a id="current_location">Find Nearby Sounds</a></li> 
+      <li><%= link_to "Sign Up", new_user_path %> </li>
+      <li><%= link_to "Login", :login %> </li>
 
       <% end %>
-    </nav>
+    </ul>
   </header>
-
-<div class="clear"></div>
-
 
 
   <%= yield %>
-  
-
 
   <div>
     <p id="notice"><%= flash[:notice] %></p>
@@ -64,15 +40,14 @@
   </div>
 
 </body>
-
-
-
-<footer>
-  An All About Drama design.
-
-</footer>
 </html>
 
 
+<footer>
+    Copyright 2014. An All About Drama design.
 
+</footer>
+
+
+</html>
 
