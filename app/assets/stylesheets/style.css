@@ -1,5 +1,71 @@
-a{
+* { 
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+a {
   text-decoration: none;
+}
+
+a:link {color: #000000; text-decoration: none; }
+a:active {color: #00bbff; text-decoration: none; }
+/*a:visited {color: #003D85; text-decoration: none; }*/
+a:hover {color: #00bbff; text-decoration: none; }
+
+h1{
+  font-size: 1.4rem;
+  margin: 0;
+  color: #2D3D61;
+}
+
+h2{
+  font-size: 1.2rem;
+  margin: 0;
+  color: #2D3D61;
+}
+
+
+
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+
+  height: 1rem;
+  top:0px; 
+  margin:auto; 
+  z-index:100000; 
+  width:100%;
+  background: #255FE0;
+}
+
+header > h1 {
+  display: block;
+
+}
+
+nav {
+ background: #255FE0;
+ width: 100%;
+}
+
+
+.nav-left{
+  float: left;
+  width: 50%;
+}
+
+.nav-right{
+  float: right;
+  width: 50%;
+}
+
+.clear {
+  clear: both;
 }
 
 
@@ -7,8 +73,7 @@ a{
   list-style: none;
   margin: 0; 
   
-  background: deepskyblue;
-  
+  background: #255FE0;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -16,7 +81,7 @@ a{
   display: flex;
   
   -webkit-flex-flow: row wrap;
-  justify-content: flex-end;
+  justify-content: flex-e
 }
 
 .navigation a {
@@ -30,53 +95,79 @@ a{
   background: darken(deepskyblue, 6%);
 }
 
-header > h1 {
+
+#container{
+  width: 100%;
+  margin: 0, auto;
   display: block;
-  color: red;
+  clear: both;
+
+}
+
+.sound {
+  display: block;
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 1rem;
+
+}
+
+.sound-name {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 
+
 footer {
-  position:fixed;
-  height: 20px;
-  background-color: deepskyblue;
+  position: fixed;
+  height: 1.1 rem;
+  background-color: #255FE0;
   bottom: 0px;
   left: 0;
   right: 0;
   margin-bottom: 0;
-    color: white;
-    font-size: 1em;
-    padding: 0.3em;
+  color: white;
+  font-size: 1rem;
+  padding: 0.3rem;
 }
 
-#container{
-  width: 90%;
-  margin: 0, auto;
 
-}
 
 #map-canvas{
   height: 40vh;
-  width: 100vw;
+  /*  width: 100vh;*/
+
 }
 
 #sound-list{
-  
-width: 100%;
+  width: 100%;
   margin: 0, auto;
-
 }
 
 audio {
-  width: 50%;
   margin: 0, auto;
+  -webkit-transition:all 0.5s linear;
+  -moz-transition:all 0.5s linear;
+  -o-transition:all 0.5s linear;
+  transition:all 0.5s linear;
+/*-moz-box-shadow: 2px 2px 4px 0px deepskyblue;
+-webkit-box-shadow:  2px 2px 4px 0px deepskyblue;
+box-shadow: 2px 2px 4px 0px deepskyblue;
+-moz-border-radius:7px 7px 7px 7px ;
+-webkit-border-radius:7px 7px 7px 7px ;*/
+border-radius:7px 7px 7px 7px ;
 }
 
+
+
+
 ul {
-   list-style-type: none;
-   padding: 0px; 
-   margin: 0px;
+ list-style-type: none;
+ padding: 0px; 
+ margin: 0px;
 }
+
 
 /*#audio-text{
   width: 40%;
@@ -90,47 +181,46 @@ ul {
   }
 }
 */
-@media all and (max-width: 600px) {
-  .navigation {
+@media screen and (max-width: 600px) {
+
+  /*.navigation {
     -webkit-flex-flow: column wrap;
     padding: 0;
+    }*/
+
+    .navigation a { 
+      /*    text-align: center; */
+      display: inline;
+      padding: 2px;
+      border-top: 1px solid rgba(255,255,255,0.3); 
+      border-bottom: 1px solid rgba(0,0,0,0.1); 
+    }
+
+
+
+
+
+
+    .navigation li:last-of-type a {
+      border-bottom: none;
+    }
+
+    #map-canvas{
+      height: 25vh;
+      /*    width: 100vh;*/
+    }
+
+    .sound {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      font-size: 0.5rem;
+    }
+
   }
-  
-  .navigation a { 
-    text-align: center; 
-    padding: 2px;
-    border-top: 1px solid rgba(255,255,255,0.3); 
-    border-bottom: 1px solid rgba(0,0,0,0.1); 
-  }
-
-  
-  .navigation li:last-of-type a {
-    border-bottom: none;
-  }
-
-  #map-canvas{
-    height: 15vh;
-    width: 100vw;
-  }
 
 
-}
-
-
-audio
-{
--webkit-transition:all 0.5s linear;
--moz-transition:all 0.5s linear;
--o-transition:all 0.5s linear;
-transition:all 0.5s linear;
--moz-box-shadow: 2px 2px 4px 0px deepskyblue;
--webkit-box-shadow:  2px 2px 4px 0px deepskyblue;
-box-shadow: 2px 2px 4px 0px deepskyblue;
--moz-border-radius:7px 7px 7px 7px ;
--webkit-border-radius:7px 7px 7px 7px ;
-border-radius:7px 7px 7px 7px ;
-}
-
+/*
 audio:hover, audio:focus, audio:active
 {
 -webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
@@ -139,7 +229,7 @@ box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
 -webkit-transform: scale(1.005);
 -moz-transform: scale(1.005);
 transform: scale(1.005);
-}
+}*/
 
 
 /*
